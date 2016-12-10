@@ -16,6 +16,10 @@ interface OpeningHand extends Hand{
     openingSuit?: Suits,
 }
 
+interface CompetingHand extends Hand{
+    onlyIfOpeningHand?: Hand[]
+}
+
 interface RespondingHand extends Hand, MajorSuitInvitationHand{
     onlyIfOpeningHand?: Hand[], 
     respondingBid?: string,

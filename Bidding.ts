@@ -55,10 +55,21 @@ const openingOneClub = {
     MinNumberInSuit: 3,
     openingBid: '1♣'
 } as OpeningHand;
-///////////////////////////////////////  Opening Competitor //////////////////////////////
-const competingWithOpeningSuit = {
+///////////////////////////////////////  Opening Suit Competitor  //////////////////////////////
+const threeCardSupportInAllNonOpeningSuitAndNoMoreThanThreeInOpeningSuit = {};
+const takeoutDouble = {
+        onlyIfOpeningHand: [openingOneSpade, openingOneClub, openingOneDiamond, openingOneHeart],
+        HCPMin: 13,
+        shape: threeCardSupportInAllNonOpeningSuitAndNoMoreThanThreeInOpeningSuit,
+} as CompetingHand;
+
+const overCallLevelOne = {
+    onlyIfOpeningHand: [openingOneSpade, openingOneClub, openingOneDiamond, openingOneHeart],
+    onlyIfNot: [takeoutDouble],
+    HCPMin: 6,
+    HCPMax: 17,
     
-} as Hand;
+} as CompetingHand;
 //////////////////////////////////////   Responding ///////////////////////////////////////
 const respondersHand = {} as Hand;
 const respondingToOneNoTrump = {

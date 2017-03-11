@@ -8,6 +8,7 @@ interface Hand{
     onlyIfNot?: Hand[],
     NoOfHearts?: Number,
     NoOfSpades?: Number,
+    MaxNoInSameSuit?: Number,
     //biddingSuit?: Suits,
 }
 
@@ -18,12 +19,17 @@ interface OpeningHand extends Hand{
 
 interface CompetingHand extends Hand{
     onlyIfOpeningHand?: Hand[]
+    competingBid?: string,
 }
 
 interface RespondingHand extends Hand, MajorSuitInvitationHand{
     onlyIfOpeningHand?: Hand[], 
     respondingBid?: string,
     respondingSuit?: Suits,
+    hasFitWithOpeningHand?: boolean,
+    PartnerSuitSupportMin?: number,
+    PartnerSuitSupportMax?: number,
+    minNoOfCardsInLowerSuitThanOpener?: number,
 }
 
 interface OpenerRebiddingHand extends Hand{

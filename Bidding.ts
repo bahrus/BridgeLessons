@@ -145,7 +145,7 @@ const preemptiveOpeningBidTwoLevel = {
         HCPMin: 15,
         respondingBid: 'Slam'
     }
-    const respondingToOneOfASuit = {
+    const respondingToOneOfASuitByPassing = {
         PassLC:{
             HCPMax: 5,
             respondingBid: 'Pass'
@@ -155,7 +155,7 @@ const preemptiveOpeningBidTwoLevel = {
             respondingBid: 'Pass'
         } as RespondingHand,
     }
-    const respPasses = [respondingToOneOfASuit.PassLC, respondingToOneOfASuit.PassNoBigHand];
+    const respPasses = [respondingToOneOfASuitByPassing.PassLC, respondingToOneOfASuitByPassing.PassNoBigHand];
     const openingOneMajor = [openingOneHeart, openingOneSpade];
     const specialResponsesToOneMajor = {
         JumpTo3OfLowerSuit:{
@@ -204,18 +204,34 @@ const preemptiveOpeningBidTwoLevel = {
                 raisingSuitRespondingBids.TwoOfMajorSuit, 
                 raisingSuitRespondingBids.ThreeOfMajorSuit, 
                 raisingSuitRespondingBids.FourOfMajorSuitPreemptiveRaise
-            ]
+            ],
+            respondingBid: '1NT',
+            isForcing: true,
         } as RespondingHand,
         OneNTForcingNoFit:{
-            onlyIf:[openingOneHeart, openingOneSpade],
+            onlyIf:openingOneMajor,
             onlyIfNot: [respPasses, specialResponsesToOneMajor.JumpTo3OfLowerSuit],
             HCPMax: 12,
             HCPMin: 6,
-            hasFitWithOpeningHand: false
+            hasFitWithOpeningHand: false,
+            isForcing: true
         } as RespondingHand,
         
-        
-    } 
+    }
+    const respondingToOneMajorWith3NT = {
+        hasFitWithOpeningHand: true,
+        PartnerSuitSupportMin: 3,
+        PartnerSuitSupportMax: 3,
+        has4333Shape: true,
+        respondingBid: '3NT'
+    } as RespondingHand;
+    const respondingToOneMajorWithTwoOverOneGameForcingBid = {
+        onlyIf: openingOneMajor,
+        onlyIfNot: respondingToOneMajorWith3NT,
+        hasFitWithOpeningHand: false,
+        HCPMin: 13,
+        respondingBid: '2[best alternative suit]'
+    } as RespondingHand;
 //End Responding to Opener
 ///////////////// Responding to 1HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 ///////////////// Responding to Takeout Double ///////////////////////////

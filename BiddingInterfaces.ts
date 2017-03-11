@@ -30,6 +30,8 @@ interface RespondingHand extends Hand, MajorSuitInvitationHand{
     PartnerSuitSupportMin?: number,
     PartnerSuitSupportMax?: number,
     minNoOfCardsInLowerSuitThanOpener?: number,
+    isForcing?: boolean,
+    has4333Shape?: boolean,
 }
 
 interface OpenerRebiddingHand extends Hand{
